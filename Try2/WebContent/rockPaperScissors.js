@@ -1,29 +1,44 @@
 /**
  * A rudimentary Rock Paper Scissors game.
  */
-var rPS = function(p1,p2){
-  if(p1 === p2){
-    alert("The game is tied");
-  }
-  
-  if(p1 === "rock" && p2 === "scissors" || p1 === "scissors" && p2 === "rock"){
-    alert("Rock beats scissors");
-  }
-  
-  if(p1 === "rock" && p2 === "paper" || p1 === "paper" && p2 === "rock"){
-    alert("Paper covers rock. Paper wins!");
-  }
-  
-  if(p1 === "paper" && p2 === "scissors" || p1 === "scissors" && p2 === "paper"){
-    alert("Scissors cut paper. Scissors win!");
-  }
-  
-  //Faulty input validator. Will be fixed.
-  if(p1 != "rock" || p1 != "paper" || p1 != "scissors" || p2 != "rock" || p2 != "paper" || p3 != "scissors"){
-	  alert("That is not a valid entry!");
-  }
+var userChoice = prompt("Do you choose rock, paper or scissors?");
+var computerChoice = Math.random();
+if (computerChoice < 0.34) {
+	computerChoice = "rock";
+} else if(computerChoice <= 0.67) {
+	computerChoice = "paper";
+} else {
+	computerChoice = "scissors";
+}
+var compare = function(choice1, choice2){
+    if(choice1 === choice2){
+        return "The result is a tie!";
+    }
+    
+    if(choice1 === "rock"){
+        if(choice2 === "scissors"){
+            return "rock wins";
+        }else{
+            return "paper wins";
+        }
+    }
+    
+    if(choice1 === "paper"){
+        if(choice2 === "rock"){
+            return "paper wins";
+        }else{
+            return "scissors wins";
+        }
+    }
+    
+    if(choice1 === "scissors"){
+        if(choice2 === "rock"){
+            return "rock wins";
+        }else{
+            return "scissors wins";
+        }
+    }
+    
 };
 
-var p1 = prompt("Enter your choice");
-var p2 = prompt("Enter your choice");
-rPS(p1,p2);
+alert(compare(userChoice, computerChoice));
